@@ -10,11 +10,6 @@ public class TowerSpawner : MonoBehaviour
 
     private List<Ring> _allRings = new List<Ring>();
 
-    private void Start()
-    {
-        SpawnRings();
-    }
-
     public List<Ring> SpawnRings()
     {
         Transform currentPoint = _spawnPoint;
