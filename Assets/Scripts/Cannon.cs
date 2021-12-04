@@ -5,7 +5,10 @@ public class Cannon : MonoBehaviour
 {
     [SerializeField] private Transform _shootPoint;
     [SerializeField] private Bullet _bulletPrefab;
+    
+    [Header("Stats")]
     [SerializeField] private float _fireRate;
+    [SerializeField] private float _bulletSpeed;
 
     private float _timeFromLastShot;
 
@@ -25,6 +28,7 @@ public class Cannon : MonoBehaviour
 
     private void Shoot()
     {
-        Instantiate(_bulletPrefab, _shootPoint.position, Quaternion.identity);
+        Bullet instance = Instantiate(_bulletPrefab, _shootPoint.position, Quaternion.identity);
+        instance.SetBullet(_shootPoint.forward, _bulletSpeed);
     } 
 }
