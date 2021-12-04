@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
@@ -13,4 +14,13 @@ public class Bullet : MonoBehaviour
     }
 
     private void Update() => transform.Translate(_moveDirection * _speed * Time.deltaTime);
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.TryGetComponent(out Ring ring))
+        {
+            ring.Destroy();
+            Destroy(gameObject);
+        }
+    }
 }

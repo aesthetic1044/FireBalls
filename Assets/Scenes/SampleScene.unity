@@ -897,8 +897,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f821237856b10b840819facfcfc56a91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _towerSize: 50
-  _ringPrefab: {fileID: 2208248971203153756, guid: 275899bc5c5da5a439720fedc15b5764, type: 3}
+  _towerSize: 25
+  _ringPrefab: {fileID: 1274136452431129496, guid: 40c7ad4fac1561f43bb0c96cf5bcf615, type: 3}
   _spawnPoint: {fileID: 1999383361}
 --- !u!114 &1999383363
 MonoBehaviour:
