@@ -4,6 +4,9 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     private float _speed;
+    
+    private const float BOUNCE_FORCE = 150;
+    private const float BOUNCE_RADIUS = 120;
 
     private Vector3 _moveDirection;
 
@@ -22,5 +25,19 @@ public class Bullet : MonoBehaviour
             ring.Destroy();
             Destroy(gameObject);
         }
+
+        if (other.gameObject.TryGetComponent(out Obstacle obstacle))
+        {
+            BounceAtPlayerFace();
+        }
+    }
+
+    private void BounceAtPlayerFace()
+    {
+        _moveDirection = Vector3.back;
+        
+        Rigidbody rb = GetComponent<Rigidbody>();
+        rb.isKinematic = false;
+        rb.AddExplosionForce(BOUNCE_FORCE, transform.position + new Vector3(0f, -1, 1), BOUNCE_RADIUS);
     }
 }
