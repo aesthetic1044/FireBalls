@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using DG.Tweening;
 
 public class Cannon : MonoBehaviour
 {
@@ -7,8 +8,9 @@ public class Cannon : MonoBehaviour
     [SerializeField] private Bullet _bulletPrefab;
     
     [Header("Stats")]
-    [SerializeField] private float _fireRate;
-    [SerializeField] private float _bulletSpeed;
+    [Range(0f, 1f)][SerializeField] private float _fireRate;
+    [Range(0f, 500f)][SerializeField] private float _bulletSpeed;
+    [Range(0f, 10f)][SerializeField] private float _recoilPower;
 
     private float _timeFromLastShot;
 
@@ -21,6 +23,9 @@ public class Cannon : MonoBehaviour
             if (_timeFromLastShot > _fireRate)
             {
                 Shoot();
+                
+                transform.DOMoveZ(transform.position.z - _recoilPower, _fireRate * 0.5f).SetLoops(2, LoopType.Yoyo);
+                
                 _timeFromLastShot = 0;
             }
         }

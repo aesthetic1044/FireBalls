@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(TowerSpawner))]
 public class Tower : MonoBehaviour
@@ -8,6 +9,8 @@ public class Tower : MonoBehaviour
    private TowerSpawner _towerSpawner;
 
    private List<Ring> _rings = new List<Ring>();
+   
+   public event UnityAction<int> towerUpdated;
 
    private void Awake()
    {
@@ -19,6 +22,8 @@ public class Tower : MonoBehaviour
    {
       foreach (var ring in _rings)
          ring._onDestroy += OnBulletHit;
+      
+      towerUpdated?.Invoke(_rings.Count);
    }
 
    private void OnBulletHit(Ring destroyedRing)
@@ -32,5 +37,7 @@ public class Tower : MonoBehaviour
          float newYPos = ring.transform.position.y - ring.transform.localScale.y;
          ring.transform.position = new Vector3(ring.transform.position.x, newYPos, ring.transform.position.z);
       }
+      
+      towerUpdated?.Invoke(_rings.Count);
    }
 }
