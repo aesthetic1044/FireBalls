@@ -948,7 +948,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 576fc3c7c6aa5494082748c1789e263d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.1533339
+      value: -1.244
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 576fc3c7c6aa5494082748c1789e263d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1219,7 +1219,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1765091471}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.63, z: 0}
+  m_LocalPosition: {x: 0, y: 0.352, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1253,6 +1253,15 @@ MonoBehaviour:
   _towerSize: 5
   _ringPrefab: {fileID: 1274136452431129496, guid: 40c7ad4fac1561f43bb0c96cf5bcf615, type: 3}
   _spawnPoint: {fileID: 1765091472}
+  _colors:
+  - {r: 0.32955217, g: 0, b: 1, a: 0}
+  - {r: 0, g: 0.24667263, b: 1, a: 0}
+  - {r: 0, g: 0.44674432, b: 0.83137256, a: 0}
+  - {r: 0, g: 0.76116115, b: 0.83137256, a: 0}
+  - {r: 0, g: 1, b: 0.46707344, a: 0}
+  - {r: 0.43125367, g: 1, b: 0, a: 0}
+  - {r: 1, g: 0.93247044, b: 0, a: 0}
+  - {r: 0.9009557, g: 0, b: 1, a: 0}
 --- !u!1 &1872468605
 GameObject:
   m_ObjectHideFlags: 0

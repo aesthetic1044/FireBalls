@@ -34,7 +34,7 @@ public class Tower : MonoBehaviour
 
       foreach (var ring in _rings)
       {
-         float newYPos = ring.transform.position.y - ring.transform.localScale.y;
+         float newYPos = ring.transform.position.y - ring.transform.localScale.y - TowerSpawner.OFF_SET;
          ring.transform.position = new Vector3(ring.transform.position.x, newYPos, ring.transform.position.z);
       }
       
