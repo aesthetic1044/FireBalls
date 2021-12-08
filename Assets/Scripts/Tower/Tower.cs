@@ -1,43 +1,47 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-[RequireComponent(typeof(TowerSpawner))]
-public class Tower : MonoBehaviour
+namespace KA
 {
-   private TowerSpawner _towerSpawner;
+    [RequireComponent(typeof(TowerSpawner))]
+    public class Tower : MonoBehaviour
+    {
+        private TowerSpawner _towerSpawner;
 
-   private List<Ring> _rings = new List<Ring>();
+        private List<Ring> _rings = new List<Ring>();
    
-   public event UnityAction<int> towerUpdated;
+        public event UnityAction<int> towerUpdated;
 
-   private void Awake()
-   {
-      _towerSpawner = GetComponent<TowerSpawner>();
-      _rings = _towerSpawner.SpawnRings();
-   }
+        private void Awake()
+        {
+            _towerSpawner = GetComponent<TowerSpawner>();
+            _rings = _towerSpawner.SpawnRings();
+        }
 
-   private void Start()
-   {
-      foreach (var ring in _rings)
-         ring._onDestroy += OnBulletHit;
+        private void Start()
+        {
+            foreach (var ring in _rings)
+                ring._onDestroy += OnBulletHit;
       
-      towerUpdated?.Invoke(_rings.Count);
-   }
+            towerUpdated?.Invoke(_rings.Count);
+        }
 
-   private void OnBulletHit(Ring destroyedRing)
-   {
-      destroyedRing._onDestroy -= OnBulletHit;
+        private void OnBulletHit(Ring destroyedRing)
+        {
+            destroyedRing._onDestroy -= OnBulletHit;
 
-      _rings.Remove(destroyedRing);
+            _rings.Remove(destroyedRing);
 
-      foreach (var ring in _rings)
-      {
-         float newYPos = ring.transform.position.y - ring.transform.localScale.y - TowerSpawner.OFF_SET;
-         ring.transform.position = new Vector3(ring.transform.position.x, newYPos, ring.transform.position.z);
-      }
+            foreach (var ring in _rings)
+            {
+                float newYPos = ring.transform.position.y - ring.transform.localScale.y - TowerSpawner.OFF_SET;
+                ring.transform.position = new Vector3(ring.transform.position.x, newYPos, ring.transform.position.z);
+            }
       
-      towerUpdated?.Invoke(_rings.Count);
-   }
+            towerUpdated?.Invoke(_rings.Count);
+        }
+    } 
 }
+
+
